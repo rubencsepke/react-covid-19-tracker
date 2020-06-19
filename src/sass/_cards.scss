@@ -1,0 +1,72 @@
+.cards {
+  background: #fff;
+  border-radius: 22px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  .card {
+    /* border: 1px solid #f0f0f0;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.1); */
+    padding: 30px;
+    text-align: center;
+    .card-title {
+      text-transform: uppercase;
+      font-size: .75em;
+      color: #979797;
+      font-weight: 500;
+    }
+    .card-value {
+      font-size: 2em;
+      font-weight: 700;
+      margin: .6em 0 .25em;
+      color: #1a2025;
+    }
+    .card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #f3f3f3;
+      margin: 0 auto .5em;
+      .svg-inline--fa {
+        font-size: 1.5em;
+        letter-spacing: normal;
+        &.fa-hospital { color: #269bb8; }
+        &.fa-skull-crossbones { color: #000000; }
+        &.fa-heart { color: #b82626; }
+        &.fa-virus { color: #26b84a; }
+      }
+    }
+    &:nth-child(1) .card-icon { background: #e6f9ff; }
+    &:nth-child(3) .card-icon { background: #ffe6e6; }
+    &:nth-child(4) .card-icon { background: #e6ffe9; }
+    .badge {
+      margin-top: 2em;
+      color: #acacac;
+      font-weight: 500;
+      font-size: 1.15em;
+      text-align: center;
+      &.badge-success {
+        color: #26b84a
+      }
+      &.badge-wrong {
+        color: #b82626
+      }
+      .fas {
+        font-size: 1.2em;
+        letter-spacing: normal;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .badge-text {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: .5rem;
+      }
+    }
+  }
+}
