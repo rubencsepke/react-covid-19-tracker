@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookMedical, faSkullCrossbones, faHeart, faVial, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faBookMedical, faSkullCrossbones, faHeart, faVial } from '@fortawesome/free-solid-svg-icons';
 
 const CountryCard = (props) => {
   return (
