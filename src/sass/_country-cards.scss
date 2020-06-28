@@ -1,7 +1,9 @@
 .countries {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  .country-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
   .country-card {
     background: #fff;
     border-radius: 22px;
@@ -19,6 +21,7 @@
         transform: translateY(-50%);
         width: 100%;
         border-radius: 3px;
+        border: 1px solid #ebebeb;
       }
     }
     .country-card-name {
@@ -27,13 +30,38 @@
     }
     .country-card-info-list {
       list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-gap: 8px;
       .country-card-info-item {
-        display: flex;
-        width: 100%;
-        margin: 8px 0;
-        font-size: 10pt;
+        background: #f4f6f7;
+        font-size: 12pt;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: left;
+        color: #3b3b3b;
+        .icon {
+          margin-bottom: 30px;
+          font-size: 14pt;
+          &.fa-book-medical {
+            color: #269bb8;
+          }
+          &.fa-skull-crossbones {
+            color: #000000;
+          }
+          &.fa-heart {
+            color: #b82626;
+          }
+          &.fa-vial {
+            color: #5e26b8;
+          }
+        }
+        .info-name {
+          font-size: 10pt;
+          margin-bottom: 8px;
+        }
         .info-value {
-          margin-left: auto;
+          font-weight: bold;
         }
       }
     }
