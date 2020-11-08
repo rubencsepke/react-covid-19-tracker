@@ -1,7 +1,7 @@
 .cards {
   background: #fff;
   border-radius: 22px;
-  padding: 30px;
+  padding: 40px;
   .card-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -10,7 +10,6 @@
   .card {
     /* border: 1px solid #f0f0f0;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.1); */
-    padding: 30px;
     text-align: center;
     .card-title {
       text-transform: uppercase;
