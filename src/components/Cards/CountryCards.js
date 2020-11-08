@@ -63,6 +63,7 @@ class CountryCards extends Component {
 
   render() {
     return (
+      this.state.isLoading ? <div className="loading">Loading...</div> :
       <section id="countries-wrapper" className="countries">
         <div className="filter-wrap">
           <div className="search-input">
@@ -76,12 +77,9 @@ class CountryCards extends Component {
             onClick={this.handleNavigation} 
           />
         </div>
-        {this.state.isLoading ? 
-          <div className="loading">Loading...</div> :
           <div className="country-list"> 
             {this.state.slicedCountries.map((data,index) => <CountryCard key={index} data={data} />)}
           </div>
-        }
       </section>
     )
   }
