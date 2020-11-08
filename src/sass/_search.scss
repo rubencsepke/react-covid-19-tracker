@@ -1,6 +1,8 @@
 .filter-wrap {
   margin: 0 0 16px;
+  overflow: hidden;
   .search-input {
+    float: left;
     position: relative;
     background: #fff;
     padding: 15px 15px 15px 45px;
