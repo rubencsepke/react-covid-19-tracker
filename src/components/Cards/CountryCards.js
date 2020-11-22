@@ -70,12 +70,14 @@ class CountryCards extends Component {
             <input type="text" placeholder="Search by country" onChange={this.handleSearch} />
             <FontAwesomeIcon icon={faSearch} />
           </div>
+          {this.state.numberOfPages > 1 && 
           <Pagination 
             numberOfPages={this.state.numberOfPages} 
             selectedPage={this.state.selectedPage} 
             selectedPageIndex={this.state.selectedPageIndex} 
             onClick={this.handleNavigation} 
           />
+          }
         </div>
           <div className="country-list"> 
             {this.state.slicedCountries.map((data,index) => <CountryCard key={index} data={data} />)}
