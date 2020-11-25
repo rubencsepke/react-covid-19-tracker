@@ -5,7 +5,8 @@
     padding: 32px 0 16px;
     .country-list-header {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 150px repeat(7, 1fr);
+      align-items: center;
       padding: 0 32px 32px;
       text-align: center;
       font-weight: bold;
@@ -16,26 +17,27 @@
     .country-list-body {
       background: transparent;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 150px repeat(7, 1fr);
       align-items: center;
       text-align: center;
       padding: 16px 16px;
       margin: 0 16px;
+      font-size: 14px;
       transition: background .3s;
       border-radius: 8px;
       &:hover {
-        background: #d2e0ff;
+        background: #e2ebff;
       }
       .country-name {
         display: grid;
-        grid-template-columns: 55px auto;
+        grid-template-columns: 40px auto;
         align-items: center;
         text-align: left;
         .country-flag {
           position: relative;
-          width: 40px;
-          height: 40px;
-          border-radius: 40px;
+          width: 26px;
+          height: 26px;
+          border-radius: 25px;
           overflow: hidden;
           img {
             position: absolute;
@@ -44,6 +46,14 @@
             transform: translate(-50%,-50%);
             height: 100%;
           }
+        }
+      }
+      .country-info-value {
+        &.red {
+          color: #b82626;
+        }
+        &.green {
+          color: #189236;
         }
       }
     }

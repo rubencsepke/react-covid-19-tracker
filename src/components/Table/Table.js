@@ -82,9 +82,12 @@ class Table extends Component {
           <div className="country-list"> 
             <div className="country-list-header">
               <span>Country</span>
-              <span>Cases</span>
-              <span>Deaths</span>
-              <span>Recovered</span>
+              <span>Total<br/>Cases</span>
+              <span>Today<br/>Cases</span>
+              <span>Total<br/>Deaths</span>
+              <span>Today<br/>Deaths</span>
+              <span>Total<br/>Recovered</span>
+              <span>Today<br/>Recovered</span>
               <span>Tests</span>
             </div>
             {this.state.slicedCountries.map((data,index) => <TableBody key={index} data={data} />)}
