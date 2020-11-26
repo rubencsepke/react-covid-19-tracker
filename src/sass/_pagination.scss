@@ -1,5 +1,9 @@
 .pagination {
-  float: right;
+  text-align: center;
+  @media (min-width: 768px) {
+    float: right;
+    margin: 0;
+  }
   .pagination-item-prev,
   .pagination-item-first,
   .pagination-list,

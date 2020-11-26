@@ -5,10 +5,14 @@
 
 #header {
   margin-top: 10em;
+  text-align: center;
   .header-icon {
     border-radius: 3px;
     letter-spacing: normal;
     margin-right: 0.5rem;
     color: #26b84a;
+  }
+  @media (min-width: 768px) {
+    text-align: left;
   }
 }

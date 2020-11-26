@@ -2,12 +2,16 @@
   margin: 0 0 16px;
   overflow: hidden;
   .search-input {
-    float: left;
     position: relative;
     background: #fff;
     padding: 15px 15px 15px 45px;
     border-radius: 8px;
-    width: 280px;
+    width: 210px;
+    margin: 0 auto 16px;
+    @media (min-width: 768px) {
+      float: left;
+      margin: 0;
+    }
     .fa-search {
       position: absolute;
       top: 15px;
