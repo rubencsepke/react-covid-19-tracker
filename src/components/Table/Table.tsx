@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import CountryCard from './CountryCard.js';
 import Pagination from '../Pagination/Pagination.js';
+import TableBody from '../Table/TableBody.js';
 
-class CountryCards extends Component {
+class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ class CountryCards extends Component {
   async getCountriesAsync() {
     this.setState({isLoading: true});
 
-    const countriesResp = await fetch(process.env.REACT_APP_API_URL+'countries');
+    const countriesResp = await fetch(import.meta.env.VITE_API_URL+'countries');
     const countriesData = await countriesResp.json();
 
     const numberOfPages = Math.ceil(countriesData.length / this.state.itemsPerPage);
@@ -45,12 +45,12 @@ class CountryCards extends Component {
   }
 
   handleNavigation(selectedPageIndex,selectedPage) {
-    if(selectedPageIndex >= 0 && selectedPageIndex !== this.state.numberOfPages) { 
+    if(selectedPageIndex >= 0 && selectedPageIndex !== this.state.numberOfPages) {
       this.setState({isLoading: true, selectedPageIndex: selectedPageIndex, selectedPage: selectedPage});
       const start = this.state.itemsPerPage * selectedPageIndex;
       const end = start + this.state.itemsPerPage;
       if(this.state.searchResults.length > 0) {
-        this.setState({slicedCountries: this.state.searchResults.slice(start,end), isLoading: false});  
+        this.setState({slicedCountries: this.state.searchResults.slice(start,end), isLoading: false});
       } else {
         this.setState({slicedCountries: this.state.countries.slice(start,end), isLoading: false});
       }
@@ -70,21 +70,31 @@ class CountryCards extends Component {
             <input type="text" placeholder="Search by country" onChange={this.handleSearch} />
             <FontAwesomeIcon icon={faSearch} />
           </div>
-          {this.state.numberOfPages > 1 && 
-          <Pagination 
-            numberOfPages={this.state.numberOfPages} 
-            selectedPage={this.state.selectedPage} 
-            selectedPageIndex={this.state.selectedPageIndex} 
-            onClick={this.handleNavigation} 
+          {this.state.numberOfPages > 1 &&
+          <Pagination
+            numberOfPages={this.state.numberOfPages}
+            selectedPage={this.state.selectedPage}
+            selectedPageIndex={this.state.selectedPageIndex}
+            onClick={this.handleNavigation}
           />
           }
         </div>
-          <div className="country-list"> 
-            {this.state.slicedCountries.map((data,index) => <CountryCard key={index} data={data} />)}
+          <div className="country-list">
+            <div className="country-list-header">
+              <span>Country</span>
+              <span>Total<br/>Cases</span>
+              <span>Today<br/>Cases</span>
+              <span>Total<br/>Deaths</span>
+              <span>Today<br/>Deaths</span>
+              <span>Total<br/>Recovered</span>
+              <span>Today<br/>Recovered</span>
+              <span>Tests</span>
+            </div>
+            {this.state.slicedCountries.map((data,index) => <TableBody key={index} data={data} />)}
           </div>
       </section>
     )
   }
 }
 
-export default CountryCards
+export default Table

@@ -19,11 +19,11 @@ class Cards extends Component {
 
   async getDataAsync() {
     this.setState({isLoading: true})
-    
-    const todayResp = await fetch(process.env.REACT_APP_API_URL+'all');
+
+    const todayResp = await fetch(import.meta.env.VITE_API_URL+'all');
     const todayData = await todayResp.json();
 
-    const yesterdayResp = await fetch(process.env.REACT_APP_API_URL+'all?yesterday=true');
+    const yesterdayResp = await fetch(import.meta.env.VITE_API_URL+'all?yesterday=true');
     const yesterdayData = await yesterdayResp.json();
 
     this.setState({today: todayData, yesterday: yesterdayData, isLoading: false});
@@ -36,7 +36,7 @@ class Cards extends Component {
   render() {
     return (
       <section id="cards-wrapper" className="cards">
-        {this.state.isLoading ? 
+        {this.state.isLoading ?
           <div className="loading">Loading...</div> :
           <div className="card-list">
             <Card icon="hospital" title="Total Cases" value={this.state.today.cases} data1={[this.state.yesterday.cases, this.state.today.cases]} data2={[this.state.yesterday.cases, this.state.today.cases]} />
