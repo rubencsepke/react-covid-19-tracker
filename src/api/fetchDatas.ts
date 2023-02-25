@@ -1,8 +1,6 @@
-export const fetchDatas = async (params) => {
+export const fetchDatas = async (params: string) => {
 
   const resp = await fetch(import.meta.env.VITE_API_URL + params);
-  const data = await resp.json();
-
-  return data;
+  return await resp.json();
 
 }

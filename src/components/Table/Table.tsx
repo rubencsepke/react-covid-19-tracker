@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
+import React, {ChangeEvent, Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import Pagination from '../Pagination/Pagination.js';
 import TableBody from '../Table/TableBody.js';
+import { Country } from '../../models/country.model.js';
 
-class Table extends Component {
-  constructor(props) {
+export interface TableProps {
+    selectedPageIndex: number,
+    selectedPage: number,
+    isLoading: boolean,
+    countries: Country[],
+    slicedCountries: Country[],
+    searchResults: Country[],
+    itemsPerPage: number,
+    numberOfPages: number
+}
+
+class Table extends Component<{}, TableProps> {
+  constructor(props:any) {
     super(props);
     this.state = {
       selectedPageIndex: 0,
@@ -33,18 +45,18 @@ class Table extends Component {
     this.setState({countries: countriesData,  slicedCountries: countriesData.slice(0, this.state.itemsPerPage), numberOfPages: numberOfPages, isLoading: false});
   }
 
-  handleSearch(e) {
+  handleSearch(e: ChangeEvent) {
     e.preventDefault();
     this.setState({isLoading: true, selectedPageIndex: 0, selectedPage: 1});
     let results = [];
     results = this.state.countries.filter(data => {
-      return data.country.toLowerCase().includes(e.target.value.toLowerCase())
+        return data.country.toLowerCase().includes((e.target as HTMLInputElement).value.toLowerCase())
     });
     const numberOfPages = Math.ceil(results.length / this.state.itemsPerPage);
     this.setState({searchResults: results, slicedCountries: results.slice(0, this.state.itemsPerPage), numberOfPages: numberOfPages, isLoading: false});
   }
 
-  handleNavigation(selectedPageIndex,selectedPage) {
+  handleNavigation(selectedPageIndex: number,selectedPage: number) {
     if(selectedPageIndex >= 0 && selectedPageIndex !== this.state.numberOfPages) {
       this.setState({isLoading: true, selectedPageIndex: selectedPageIndex, selectedPage: selectedPage});
       const start = this.state.itemsPerPage * selectedPageIndex;

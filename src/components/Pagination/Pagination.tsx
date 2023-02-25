@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Pagination = (props) => {
+export interface PaginationProps {
+    numberOfPages: number
+    selectedPage: number
+    selectedPageIndex: number
+    onClick: Function
+}
+
+const Pagination = (props: PaginationProps) => {
 
   let left = props.selectedPage - 2;
   let right = props.selectedPage + 2;
@@ -17,7 +24,7 @@ const Pagination = (props) => {
     right = props.numberOfPages - 1;
   }
 
-  const range = (from, to, step) => {
+  const range = (from: number, to: number, step: number) => {
     return Array.from({length: (to - from) / step + 1}, (_, i) => from + (i * step));
   }
 
