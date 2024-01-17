@@ -2,15 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
-
-const formatNumber = (num: number) => {
-  return Number(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-const calcPercentage = (oldValue: number, newValue: number): string => {
-  const decreaseValue = newValue - oldValue;
-  return ((decreaseValue / oldValue) * 100).toFixed(2);
-}
+import { formatNumber } from '../../utils/format-number';
+import { calcPercentage } from '../../utils/calc-percentage';
+import Badge from '../Badge/Badge';
 
 const cardBadgeClass = (oldValue: number, newValue: number) => {
   const percentage = calcPercentage(oldValue, newValue);
@@ -20,8 +14,8 @@ const cardBadgeClass = (oldValue: number, newValue: number) => {
 const cardBadgeText = (oldValue: number, newValue: number) => {
   const percentage = calcPercentage(oldValue, newValue);
   return Number(percentage) > 0 ?
-    <div><FontAwesomeIcon icon={faArrowUp} /> <span className="badge-text">{percentage}%</span></div> : 
-    <div><FontAwesomeIcon icon={faArrowDown} /> <span className="badge-text">{percentage}%</span></div>
+    <Badge icon={faArrowUp} percentage={percentage} /> : 
+    <Badge icon={faArrowDown} percentage={percentage} />
 }
 
 interface CardProps {
